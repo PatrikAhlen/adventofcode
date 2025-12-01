@@ -26,4 +26,8 @@ The format will be R50 for Right 50 clicks. The initial letter assign turn direc
 
 ### Counter
 
-Each time the dial stops at 0 i want a zero-counter to add 1 to the value, starting with 0 as initial value.
+Each time the dial passes the value 0 i want a zero-counter to add 1 to the value, starting with 0 as initial value.
+
+If start value is 50 (zero-counter = 0), with the sequence L55, R110 would give:
+L55 -> 95, zero-counter = 1
+R110 -> 5, zero-counter = 3

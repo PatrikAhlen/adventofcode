@@ -23,13 +23,24 @@ class TestDial(unittest.TestCase):
             steps = int(cmd[1:])
             dial.turn(direction, steps)
         self.assertEqual(dial.value, 5)
-        self.assertEqual(dial.zero_counter, 1)  # Lands on 0 once
+        # 0->10 (no pass), 10->5 (no pass), 5->0 (passes 0 once), 0->5 (no pass)
+        self.assertEqual(dial.zero_counter, 1)
 
     def test_zero_counter_increments(self):
         dial = Dial(start=95)
-        dial.turn('R', 5)  # Lands on 0
-        self.assertEqual(dial.value, 0)
+        dial.turn('R', 10)  # 95->5, passes 0 once
+        self.assertEqual(dial.value, 5)
         self.assertEqual(dial.zero_counter, 1)
+
+        dial = Dial(start=50)
+        dial.turn('L', 55)  # 50->95, passes 0 once
+        self.assertEqual(dial.value, 95)
+        self.assertEqual(dial.zero_counter, 1)
+
+        # 95->5, passes 0 twice (95->99, 0, 1->99, 0, 1->5)
+        dial.turn('R', 110)
+        self.assertEqual(dial.value, 5)
+        self.assertEqual(dial.zero_counter, 3)
 
     def test_turn_left(self):
         dial = Dial(start=5)
