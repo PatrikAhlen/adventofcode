@@ -17,17 +17,18 @@ To turn the dial to the right, the face value is increased with the amount of cl
 The turn dial has a starting value that can be set.
 
 
-
 ### Turn dial to the right
 
 I want tell the dial to turn Right x steps. This should turn the dial to the right which will add the value of the dial from the initial value.
 The format will be R50 for Right 50 clicks. The initial letter assign turn direction, right adds to the dial value. the number is followed after the letter tells how many clicks to turn. 
 
+### Counter of zero
 
-### Counter
+The zero-counter should increment each time the dial points to 0 during a turn, except if the dial starts at 0 for that turn (the starting position does not count).
 
-Each time the dial passes the value 0 i want a zero-counter to add 1 to the value, starting with 0 as initial value.
+If start value is 50 (zero-counter = 0), with the sequence L55, R110, L5, R10 would give:
+L55 | Dial: 50 -> 95, zero-counter = 1
+R110| Dial: 95 -> 5, zero-counter = 3
+L5  | Dial: 5 -> 0, zero-counter = 4
+R10 | Dial: 0 -> 10, zero-counter = 4
 
-If start value is 50 (zero-counter = 0), with the sequence L55, R110 would give:
-L55 -> 95, zero-counter = 1
-R110 -> 5, zero-counter = 3

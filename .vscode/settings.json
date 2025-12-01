@@ -1,0 +1,18 @@
+{
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./01",
+        "-p",
+        "*test*.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true,
+    "python-envs.pythonProjects": [
+        {
+            "path": "01",
+            "envManager": "ms-python.python:venv",
+            "packageManager": "ms-python.python:pip"
+        }
+    ]
+}
